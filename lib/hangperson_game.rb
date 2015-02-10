@@ -20,6 +20,7 @@ class HangpersonGame
 	if (x.nil?) || (x.empty?) || !(x =~ /[[:alpha:]]/)
 		raise ArgumentError
 	end
+	x.downcase!
  	if @word.include? x
      		if !@guesses.include? x
         		@guesses << x

@@ -8,19 +8,15 @@ class HangpersonGame
   attr_accessor :word
   attr_accessor :guesses
   attr_accessor :wrong_guesses
-  attr_accessor :printword
-  attr_accessor :check
   
   def initialize(new_word)
     @word = new_word
     @guesses = ''
     @wrong_guesses = ''
-    @printword = ''
-    @check = true
   end
   
   def guess(x)
-	
+	x.downcase!
 	if (x.nil?) || (x.empty?) || !(x =~ /[[:alpha:]]/)
 		raise ArgumentError
 	end
@@ -35,24 +31,22 @@ class HangpersonGame
         		@wrong_guesses << x
       		else
         		return false
-      		end
-    	end
+      		end    	end
   end
   
   def word_with_guesses
-	
+	printword = ''
   	length = @word.length
 	i = 0
 	while i < length
         	if @guesses.include? @word[i]
-			@printword << @word[i]
+			printword << @word[i]
 		else
-			@printword<< '-'
-			@check = false
+			printword<< '-'
 		end
 		i+=1
 	end
-	return @printword 	
+	return printword 	
 	
   end
 

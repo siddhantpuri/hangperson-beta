@@ -58,13 +58,13 @@ class HangpersonApp < Sinatra::Base
   # @wrong_guesses and @word_with_guesses, so set those up here.
   get '/show' do
     ### YOUR CODE HERE ###
-    if (@game.check_win_or_lose == :play)
+    if @game.check_win_or_lose == :play
       erb :show # You may change/remove this line
   
-    elsif (@game.check_win_or_lose == :win)
+    elsif @game.check_win_or_lose == :win
       redirect '/win'
   
-    elsif (@game.check_win_or_lose == :lose)
+    else
       redirect '/lose'
     end
 
@@ -72,7 +72,7 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
-    if (@game.check_win_or_lose != :win)
+    if @game.check_win_or_lose != :win
       redirect '/show'
     end
     erb :win
@@ -80,7 +80,7 @@ class HangpersonApp < Sinatra::Base
   
   get '/lose' do
     ### YOUR CODE HERE ###
-    if (@game.check_win_or_lose != :lose)
+    if @game.check_win_or_lose != :lose
       redirect '/show'
     end
     erb :lose
